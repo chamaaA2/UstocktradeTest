@@ -71,7 +71,7 @@ public class Bufferwithoutpool extends Thread {
         }
         System.out.println("get momory total    " + rn.totalMemory());
         System.out.println("get memory  after    " + rn.freeMemory());
-        System.out.print("used memo          ");
+        System.out.print("used memo  chamath madhushan        ");
         System.out.println(rn.totalMemory() - rn.freeMemory());
         System.out.println("");
 
