@@ -19,6 +19,7 @@ public class OnlineResourceAdapter {
     public final Runnable typeB;
     Runtime rn = Runtime.getRuntime();
     static long startTime;
+    static long endTime;
     static OnlineResourceAdapter x = new OnlineResourceAdapter();
 
     public OnlineResourceAdapter() {
@@ -68,11 +69,14 @@ public class OnlineResourceAdapter {
                     System.out.print(entry.getKey() + ": ");
                     System.out.println(entry.getValue());
                 }
+                endTime = System.nanoTime();
+                long totalTime = (endTime - startTime) / 1000000;
+                System.out.println("Runtime    MS:");
+                System.out.println(totalTime);
+
             }
         };
-        long endTime = System.nanoTime();
-        long totalTime = (endTime - startTime) / 1000000;
-        System.out.println(totalTime);
+
     }
 
     public static void main(String args[]) {
