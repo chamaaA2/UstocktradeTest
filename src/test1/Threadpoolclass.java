@@ -36,19 +36,13 @@ public class Threadpoolclass {
         }
 
 
-        System.out.println("gchamath     " + rn.totalMemory());
+        System.out.println("get memory before     " + rn.totalMemory());
         System.out.println("get memory  after    " + rn.freeMemory());
-        System.out.println("madn athan");
-
-        System.out.println("get mpppp     " + rn.totalMemory());
-        System.out.println("get memory  after    " + rn.freeMemory());
-        System.out.println("");
-
         System.out.println(rn.totalMemory() - rn.freeMemory());
         System.out.println("");
-
         long endTime = System.nanoTime();
         long totalTime = (endTime - startTime) / 1000000;
+        System.out.print("runtime    MS:");
         System.out.println(totalTime);
 
     }

@@ -47,7 +47,7 @@ public class OnlineResourceAdapter {
                         // get information of type A
                         // return the data or directly store in OnlineResourceAdapter.
                     }
-                    
+
                     new Thread(x.typeB).start();
                 } catch (IOException e) {
                 } finally {
@@ -61,7 +61,7 @@ public class OnlineResourceAdapter {
         };
         typeB = new Runnable() {
             public void run() {
-                
+
                 Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
 
                 for (Map.Entry<String, Integer> entry : entrySet) {
@@ -72,15 +72,14 @@ public class OnlineResourceAdapter {
         };
         long endTime = System.nanoTime();
         long totalTime = (endTime - startTime) / 1000000;
-        System.out.println("///////////////////////////////////////");
-        System.out.println(totalTime);}
+        System.out.println(totalTime);
+    }
 
     public static void main(String args[]) {
         startTime = System.nanoTime();
         new Thread(x.typeA).start(); // start A
         // start B
 
-        
 // <1>can be accessed here.
     }
 

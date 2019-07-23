@@ -63,6 +63,7 @@ public class BufferReadSimpleProgramme {
 
         long endTime = System.nanoTime();
         long totalTime = (endTime - startTime) / 1000000;
+        System.out.print("runtime    MS:");
         System.out.println(totalTime);
     }
 }
