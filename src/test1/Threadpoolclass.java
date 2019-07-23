@@ -35,9 +35,9 @@ public class Threadpoolclass {
         while (!executor.isTerminated()) {
         }
 
-        System.out.println("get momory total     " + rn.totalMemory());
+        System.out.println("get momoy total     " + rn.totalMemory());
         System.out.println("get memory  after    " + rn.freeMemory());
-        System.out.println("madn senathan");
+        System.out.println("madn athan");
         System.out.println(rn.totalMemory() - rn.freeMemory());
         System.out.println("");
 
