@@ -47,7 +47,7 @@ public class Bufferwithoutpool implements Runnable {
             int n = 0;
             while ((n = reader.read(buffer)) != -1) {
 
-                String[] re = sw.append(buffer, 0, n).toString().toLowerCase().trim().split(" ", 0);
+                String[] re = sw.append(buffer, 0, n).toString().toLowerCase().trim().split("\\s+", 0);
 
                 for (String word : re) {
 
