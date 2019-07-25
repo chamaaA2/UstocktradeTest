@@ -28,12 +28,12 @@ public class OnlineResourceAdapter {
                 BufferedReader reader = null;
                 try {
 
-                    reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"));
+                    reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"),16384);
 
                     String currentLine = reader.readLine();
                     while (currentLine != null) {
 
-                        String[] wordsbunch = currentLine.toLowerCase().trim().split(" ");
+                        String[] wordsbunch = currentLine.trim().toLowerCase().split(" ",0);
                         for (String word : wordsbunch) {
 
                             if (wordCountMap.containsKey(word)) {
@@ -49,7 +49,7 @@ public class OnlineResourceAdapter {
                         // return the data or directly store in OnlineResourceAdapter.
                     }
 
-                    new Thread(x.typeB).start();
+                    x.typeB.run();
                 } catch (IOException e) {
                 } finally {
                     try {
@@ -81,7 +81,7 @@ public class OnlineResourceAdapter {
 
     public static void main(String args[]) {
         startTime = System.nanoTime();
-        new Thread(x.typeA).start(); // start A
+        x.typeA.run();// start A
         // start B
 
 // <1>can be accessed here.

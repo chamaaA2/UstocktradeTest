@@ -19,7 +19,7 @@ public class BufferReaderpool extends Thread{
         BufferedReader reader = null;
 
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"));
+            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"),16384);
             
             String currentLine = reader.readLine();
             while (currentLine != null) {

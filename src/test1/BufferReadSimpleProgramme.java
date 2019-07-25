@@ -22,7 +22,7 @@ public class BufferReadSimpleProgramme {
         BufferedReader reader = null;
 
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"));
+            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384);//16 KB Buffersize changed
 
             String currentLine = reader.readLine();
             while (currentLine != null) {
@@ -60,10 +60,6 @@ public class BufferReadSimpleProgramme {
         System.out.println(rn.freeMemory());
 
         System.out.println(rn.totalMemory() - rn.freeMemory());
-
-        long endTime = System.nanoTime();
-        long totalTime = (endTime - startTime) / 1000000;
-        System.out.print("runtime    MS:");
-        System.out.println(totalTime);
+        
     }
 }
