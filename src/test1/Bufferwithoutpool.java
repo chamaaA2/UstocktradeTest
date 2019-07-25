@@ -42,11 +42,14 @@ public class Bufferwithoutpool implements Runnable {
         try {
             reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384); //16 KB Buffersize changed
 
-            String currentLine = reader.readLine();
-            while (currentLine != null) {
-                
-                String[] wordsbunch = currentLine.toLowerCase().trim().split(" ",0);
-                for (String word : wordsbunch) {
+            StringBuilder sw = new StringBuilder();
+            char[] buffer = new char[1024 * 32];
+            int n = 0;
+            while ((n = reader.read(buffer)) != -1) {
+
+                String[] re = sw.append(buffer, 0, n).toString().toLowerCase().trim().split(" ", 0);
+
+                for (String word : re) {
 
                     if (wordCountMap.containsKey(word)) {
                         wordCountMap.put(word, wordCountMap.get(word) + 1);
@@ -55,9 +58,10 @@ public class Bufferwithoutpool implements Runnable {
                     }
                 }
 
-                currentLine = reader.readLine();
+                sw.setLength(0);
+                reader.read(buffer);
+
             }
-            //System.err.println(wordCountMap);
 
             Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
 

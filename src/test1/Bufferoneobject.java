@@ -28,13 +28,16 @@ public class Bufferoneobject {
                 BufferedReader reader = null;
                 try {
 
-                    reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"),16384);
+                    reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384);
 
-                    String currentLine = reader.readLine();
-                    while (currentLine != null) {
+                    StringBuilder sw = new StringBuilder();
+                    char[] buffer = new char[1024 * 32];
+                    int n = 0;
+                    while ((n = reader.read(buffer)) != -1) {
 
-                        String[] wordsbunch = currentLine.trim().toLowerCase().split(" ",0);
-                        for (String word : wordsbunch) {
+                        String[] re = sw.append(buffer, 0, n).toString().toLowerCase().trim().split(" ", 0);
+
+                        for (String word : re) {
 
                             if (wordCountMap.containsKey(word)) {
                                 wordCountMap.put(word, wordCountMap.get(word) + 1);
@@ -43,10 +46,9 @@ public class Bufferoneobject {
                             }
                         }
 
-                        currentLine = reader.readLine();
+                        sw.setLength(0);
+                        reader.read(buffer);
 
-                        // get information of type A
-                        // return the data or directly store in OnlineResourceAdapter.
                     }
 
                     x.typeB.run();

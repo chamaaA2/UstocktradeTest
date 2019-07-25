@@ -42,9 +42,9 @@ public class BufferConcurrentHash implements Runnable {
         try {
             reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384); //16 KB Buffersize changed
 
-            String currentLine = reader.readLine();
-            StringBuffer sw = new StringBuffer();
-            char[] buffer = new char[1024*64];
+           
+            StringBuilder sw = new StringBuilder();
+            char[] buffer = new char[1024*32];
             int n = 0;
             while ((n = reader.read(buffer)) != -1) {
 
@@ -58,11 +58,14 @@ public class BufferConcurrentHash implements Runnable {
                         wordCountMap.put(word, 1);
                     }
                 }
-                break;
+               
           
-                //System.out.println(wordCountMap);
+               // System.out.println(wordCountMap);
+                sw.setLength(0);
+                reader.read(buffer);
+                
             }
-            //System.out.println(wordCountMap);
+           // System.out.println(wordCountMap);
            // System.err.println("buffer lengh"+buffer.length);
 
             Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
