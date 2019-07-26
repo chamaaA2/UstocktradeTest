@@ -34,42 +34,40 @@ public class BufferConcurrentHash implements Runnable {
 
     @Override
     public void run() {
-
         HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
-
         BufferedReader reader = null;
-
         try {
             reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384); //16 KB Buffersize changed
-
-           
             StringBuilder sw = new StringBuilder();
-            char[] buffer = new char[1024*32];
-            int n = 0;
-            while ((n = reader.read(buffer)) != -1) {
-
-                String[] re = sw.append(buffer, 0, n).toString().toLowerCase().trim().split(" ",0);
-
-                for (String word : re) {
-
-                    if (wordCountMap.containsKey(word)) {
-                        wordCountMap.put(word, wordCountMap.get(word) + 1);
+            int m = 0;
+            String str = null;
+            while ((m = reader.read()) != -1) {
+                if ((m != 13) && (m != 10)) {
+                    if (m != 32) {
+                        char p = (char) m;
+                        sw.append(p);
                     } else {
-                        wordCountMap.put(word, 1);
+                        str = sw.toString();
+                        if (wordCountMap.containsKey(str)) {
+                            wordCountMap.put(str, wordCountMap.get(str) + 1);
+                            sw.setLength(0);
+                        } else {
+                            wordCountMap.put(str, 1);
+                            sw.setLength(0);
+                        }
+                    }
+                } else {
+                    str = sw.toString();
+                    if (wordCountMap.containsKey(str)) {
+                        wordCountMap.put(str, wordCountMap.get(str) + 1);
+                        sw.setLength(0);
+                    } else {
+                        wordCountMap.put(str, 1);
+                        sw.setLength(0);
                     }
                 }
-               
-          
-               // System.out.println(wordCountMap);
-                sw.setLength(0);
-                reader.read(buffer);
-                
             }
-           // System.out.println(wordCountMap);
-           // System.err.println("buffer lengh"+buffer.length);
-
             Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
-
             for (Map.Entry<String, Integer> entry : entrySet) {
                 System.out.print(entry.getKey() + ": ");
                 System.out.println(entry.getValue());
