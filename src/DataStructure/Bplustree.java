@@ -10,28 +10,41 @@ package DataStructure;
  * @author CHAMATH
  *
  *
- * one contains NODE 3 KEYS & 4 REFERENCE
+ * one contains one NODE 3 KEYS & 4 REFERENCE
  *
  */
 public class Bplustree {
 
-    
-    public static boolean isroot = false;
+    public static int MaxnodeReffsize = 4;
+    public leafnode ln;
+    public keynode kn;
+    public static boolean isroot = true;
 
     public static void main(String[] args) {
         Bplustree bt = new Bplustree();
-        bt.insertvalue(5);
-        
+        bt.insertvaluetree(5);
+        bt.insertvaluetree(6);
+        bt.insertvaluetree(7);
 
     }
 
-    public void insertvalue(int a) {
-        if (isroot) {
-            leafnode ln = new leafnode();
-            ln.insertvalues(a);
-            isroot=true;
+    public void insertvaluetree(int a) {
+        int key = this.findekey(a);
+        if (key == 0) {
+            ln = new leafnode(a);
+        } else {
         }
 
+    }
+
+    public int findekey(int a) {
+        if (isroot) {
+            isroot = false;
+            return 0;
+        } else if (ln.keyMin == 0) {
+            return 0;
+        }
+        return 5;
     }
 
 }

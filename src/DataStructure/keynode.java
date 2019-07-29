@@ -5,21 +5,25 @@
  */
 package DataStructure;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author CHAMATH
  */
-public class keynode extends Suppernode{
-
-
-
+public class keynode extends Suppernode {
     @Override
     public void autodivide() {
-        nodelevel="s";
+        nodelevel = "s";
     }
 
     @Override
     public void insertvalues(int a) {
+        arr = new ArrayList<Integer>();
+        arr.add(a);
+        Collections.sort(arr);
+       
     }
 
 }

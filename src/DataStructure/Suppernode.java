@@ -14,8 +14,9 @@ import java.util.ArrayList;
 public  abstract class Suppernode {
 
     public Suppernode root;
+    public int key;
     public String nodelevel;
-    public ArrayList<String> ars;
+    public ArrayList<Integer> arr;
     abstract public void autodivide();
 
     abstract public void insertvalues(int a);

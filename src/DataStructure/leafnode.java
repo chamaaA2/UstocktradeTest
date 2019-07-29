@@ -5,12 +5,23 @@
  */
 package DataStructure;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author CHAMATH
  */
-public class leafnode extends Suppernode{
+public class leafnode extends Suppernode {
 
+    int keyMax;
+    int keyMin;
+
+    public leafnode(int k) {
+        arr = new ArrayList<Integer>();
+        this.insertvalues(k);
+        keyMin = 0;
+    }
 
     @Override
     public void autodivide() {
@@ -18,6 +29,8 @@ public class leafnode extends Suppernode{
 
     @Override
     public void insertvalues(int a) {
-    }
 
+        arr.add(a);
+        Collections.sort(arr);
+    }
 }
