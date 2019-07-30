@@ -15,36 +15,30 @@ package DataStructure;
  */
 public class Bplustree {
 
-    public static int MaxnodeReffsize = 4;
-    public leafnode ln;
-    public keynode kn;
-    public static boolean isroot = true;
+    public static int MaxnodeReffsize = 3;
+    public static leafnode ln;
+    public static keynode keyroot;
+    public boolean keyroottrue = true;
+    public static boolean firstroot = true;
 
     public static void main(String[] args) {
         Bplustree bt = new Bplustree();
+ 
         bt.insertvaluetree(5);
         bt.insertvaluetree(6);
         bt.insertvaluetree(7);
+        bt.insertvaluetree(8);
 
     }
 
     public void insertvaluetree(int a) {
-        int key = this.findekey(a);
-        if (key == 0) {
+
+        if (firstroot) {
             ln = new leafnode(a);
+            firstroot = false;
         } else {
+            ln.insertvalues(a);
         }
-
-    }
-
-    public int findekey(int a) {
-        if (isroot) {
-            isroot = false;
-            return 0;
-        } else if (ln.keyMin == 0) {
-            return 0;
-        }
-        return 5;
     }
 
 }

@@ -16,9 +16,9 @@ public  abstract class Suppernode {
     public Suppernode root;
     public int key;
     public String nodelevel;
-    public ArrayList<Integer> arr;
-    abstract public void autodivide();
+   
+    abstract public void checkanddivide();
 
-    abstract public void insertvalues(int a);
+  
 
 }

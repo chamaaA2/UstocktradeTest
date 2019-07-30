@@ -7,23 +7,50 @@ package DataStructure;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  *
  * @author CHAMATH
  */
 public class keynode extends Suppernode {
-    @Override
-    public void autodivide() {
-        nodelevel = "s";
+    
+   public boolean isrootkey = true;
+
+   public ArrayList<leafnode> keyarr;
+
+    public keynode(leafnode ln) {
+        this.insertvalues(ln);
+        
+        
+    }
+
+    keynode() {
+        System.err.println("");
     }
 
     @Override
-    public void insertvalues(int a) {
-        arr = new ArrayList<Integer>();
-        arr.add(a);
-        Collections.sort(arr);
-       
+    public void checkanddivide() {
+        nodelevel = "s";
+
     }
+
+
+    public void insertvalues(leafnode ln) {
+        keyarr=new ArrayList<leafnode>();
+        keyarr.add(ln);
+
+    }
+
+    public void findactuvalnode(int a,leafnode ln) {
+ 
+    }
+
+    public leafnode paternfind(){
+        
+    
+    return null;
+    }           
+
 
 }
