@@ -56,15 +56,7 @@ public class BufferConcurrentHash implements Runnable {
                             sw.setLength(0);
                         }
                     }
-                } else {
-                    str = sw.toString();
-                    if (wordCountMap.containsKey(str)) {
-                        wordCountMap.put(str, wordCountMap.get(str) + 1);
-                        sw.setLength(0);
-                    } else {
-                        wordCountMap.put(str, 1);
-                        sw.setLength(0);
-                    }
+
                 }
             }
             Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
