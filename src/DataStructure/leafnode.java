@@ -16,9 +16,9 @@ import javafx.scene.effect.BlendMode;
 public class leafnode extends Suppernode implements Comparable<leafnode> {
 
     public static int MaxnodeReffsize = 3;
-  
+
     int sec;
-    public  keynode rootkeynode;
+    public keynode rootkeynode;
     public keynode kn;
     public ArrayList<Integer> arr;
     public boolean firstkey = false;
@@ -34,7 +34,6 @@ public class leafnode extends Suppernode implements Comparable<leafnode> {
         arr = new ArrayList<Integer>();
         arr.add(0, one);
         arr.add(1, two);
-     
 
     }
 
@@ -50,18 +49,17 @@ public class leafnode extends Suppernode implements Comparable<leafnode> {
                 arr.remove(2);
 
                 leafnode nln = new leafnode(key, sec);                           //create and devide leafe node when one leaf node is full
-                
-                
+
                 kn = new keynode(this, nln);                                         //create a new key node
-                rootkeynode=kn;
+                rootkeynode = kn;
                 firstkey = true;
-                firstkeyroot=true;
-                
+                firstkeyroot = true;
+
 //                System.err.println(arr);
 //                System.err.println(nln.arr);
-
             } else {
-
+                firstkey = true;
+                firstkeyroot = true;
                 key = arr.get(2);
                 sec = arr.get(3);
                 arr.remove(2);
@@ -73,7 +71,6 @@ public class leafnode extends Suppernode implements Comparable<leafnode> {
 
 //                System.err.println(arr);
 //                System.err.println(nln.arr);
-
             }
         }
     }
@@ -85,13 +82,13 @@ public class leafnode extends Suppernode implements Comparable<leafnode> {
             Collections.sort(arr);
             this.checkanddivide();
         } else {
-             
+
             scr.arr.add(a);
             Collections.sort(scr.arr);
             scr.checkanddivide();
-            
+
             scr.keyupdate(a);
-            System.err.println("key"+scr.key);
+            System.err.println("key" + scr.key);
         }
     }
 
@@ -120,17 +117,17 @@ public class leafnode extends Suppernode implements Comparable<leafnode> {
     }
 
     void printq() {
-       if(!firstkey){
-           System.err.println(this.arr);
-       }else{
-           rootkeynode.printq();
-       }
+        if (!firstkey) {
+            System.err.println(this.arr);
+        } else {
+            rootkeynode.printq();
+        }
     }
 
     private void keyupdate(int a) {
-        if(key<a){
-            key=a;
-           
+        if (key < a) {
+            key = a;
+
         }
     }
 }
