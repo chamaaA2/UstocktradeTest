@@ -15,19 +15,27 @@ package DataStructure;
  */
 public class Bplustree {
 
-    public static int MaxnodeReffsize = 3;
     public static leafnode ln;
     public static keynode keyroot;
     public boolean keyroottrue = true;
     public static boolean firstroot = true;
+    public int p;
 
     public static void main(String[] args) {
         Bplustree bt = new Bplustree();
- 
+
+        bt.insertvaluetree(7);
+        bt.insertvaluetree(4);
+
+        bt.insertvaluetree(8);
         bt.insertvaluetree(5);
         bt.insertvaluetree(6);
-        bt.insertvaluetree(7);
-        bt.insertvaluetree(8);
+
+       bt.insertvaluetree(5);
+       
+      // bt.insertvaluetree(5);
+//        bt.insertvaluetree(2);
+        ln.printq();
 
     }
 
@@ -39,6 +47,7 @@ public class Bplustree {
         } else {
             ln.insertvalues(a);
         }
+
     }
 
 }

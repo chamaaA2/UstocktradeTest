@@ -5,22 +5,24 @@
  */
 package DataStructure;
 
-import static DataStructure.Bplustree.MaxnodeReffsize;
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.scene.effect.BlendMode;
 
 /**
  *
  * @author CHAMATH
  */
-public class leafnode extends Suppernode {
+public class leafnode extends Suppernode implements Comparable<leafnode> {
 
-    int keyMax;
-    int keyMin;
+    public static int MaxnodeReffsize = 3;
+  
     int sec;
+    public  keynode rootkeynode;
     public keynode kn;
     public ArrayList<Integer> arr;
     public boolean firstkey = false;
+    public boolean firstkeyroot;
 
     public leafnode(int k) {
         arr = new ArrayList<Integer>();
@@ -32,7 +34,8 @@ public class leafnode extends Suppernode {
         arr = new ArrayList<Integer>();
         arr.add(0, one);
         arr.add(1, two);
-        keyMin = one;
+     
+
     }
 
     @Override
@@ -40,69 +43,62 @@ public class leafnode extends Suppernode {
         if (MaxnodeReffsize < arr.size()) {
             if (!firstkey) {
 
-                keyMax = arr.get(MaxnodeReffsize / 2);
-                sec = arr.get((MaxnodeReffsize / 2) + 1);
+                key = arr.get(2);
+                sec = arr.get(3);
 
-                kn = new keynode(this);                                                 //create a new key node
+                arr.remove(2);
+                arr.remove(2);
+
+                leafnode nln = new leafnode(key, sec);                           //create and devide leafe node when one leaf node is full
+                
+                
+                kn = new keynode(this, nln);                                         //create a new key node
+                rootkeynode=kn;
                 firstkey = true;
-
-                arr.remove(MaxnodeReffsize / 2);
-                arr.remove((MaxnodeReffsize / 2) + 1);
-
-                leafnode nln = new leafnode(keyMax, sec);                           //create and devide leafe node when one leaf node is full
+                firstkeyroot=true;
                 
-                
-                kn.insertvalues(nln);
-                
-                
-                
-                
-                System.err.println(arr);
-                System.err.println(nln.arr);
+//                System.err.println(arr);
+//                System.err.println(nln.arr);
 
             } else {
 
-                keyMax = arr.get(MaxnodeReffsize / 2);
-                sec = arr.get((MaxnodeReffsize / 2) + 1);
-                arr.remove(MaxnodeReffsize / 2);
-                arr.remove((MaxnodeReffsize / 2) + 1);
+                key = arr.get(2);
+                sec = arr.get(3);
+                arr.remove(2);
+                arr.remove(2);
 
-                leafnode nln = new leafnode(keyMax, sec);                                 //create and devide leafe node when one leaf node is full
+                leafnode nln = new leafnode(key, sec);                                //create and devide leafe node when one leaf node is full
 
-                
-                
-                kn.insertvalues(nln);
-                
-                
-               
+                kn.insertvalues(key, nln);
 
-                
-                
-                System.err.println(arr);
-                System.err.println(nln.arr);
+//                System.err.println(arr);
+//                System.err.println(nln.arr);
 
             }
-        } else {
-            System.err.println("");
         }
     }
 
-   
     public void insertvalues(int a) {
-        leafnode scr = this.Searchkey();
+        leafnode scr = this.Searchkey(a);
         if (scr == null) {
             arr.add(a);
             Collections.sort(arr);
             this.checkanddivide();
         } else {
-
+             
+            scr.arr.add(a);
+            Collections.sort(scr.arr);
+            scr.checkanddivide();
+            
+            scr.keyupdate(a);
+            System.err.println("key"+scr.key);
         }
     }
 
-    public leafnode Searchkey() {
+    public leafnode Searchkey(int a) {
 
-        if (firstkey) {
-           leafnode pln = kn.paternfind();
+        if (firstkeyroot) {
+            return rootkeynode.paternfind(a);
         }
         return null;
 
@@ -112,4 +108,29 @@ public class leafnode extends Suppernode {
 
     }
 
+    @Override
+    public int compareTo(leafnode o) {
+        if (key == o.key) {
+            return 0;
+        } else if (key > o.key) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    void printq() {
+       if(!firstkey){
+           System.err.println(this.arr);
+       }else{
+           rootkeynode.printq();
+       }
+    }
+
+    private void keyupdate(int a) {
+        if(key<a){
+            key=a;
+           
+        }
+    }
 }

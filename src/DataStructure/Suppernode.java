@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author CHAMATH
  */
 public  abstract class Suppernode {
-
-    public Suppernode root;
+   
+    public keynode root;
     public int key;
     public String nodelevel;
    
