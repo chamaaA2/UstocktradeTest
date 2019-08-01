@@ -18,24 +18,8 @@ public class keynode1 extends supprnode {
     public ArrayList<leafnode1> arra;
     public List al = new ArrayList();
 
-    keynode1(leafnode1 aThis, leafnode1 nln) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     keynode1() {
         arra = new ArrayList<leafnode1>();
-    }
-
-    void insertvalues(int key, leafnode1 nln) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    leafnode1 paternfind(int a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void printq() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

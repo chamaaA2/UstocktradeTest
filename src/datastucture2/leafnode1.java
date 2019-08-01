@@ -16,15 +16,8 @@ import javafx.scene.effect.BlendMode;
 public class leafnode1 extends supprnode implements Comparable<leafnode1> {
 
     public static int MaxnodeReffsize = 3;
-
     int sec;
-
-    public keynode1 rootkeynode;
-
-    public keynode1 kn;
     public ArrayList<Integer> arr;
-    public boolean firstkey = true;
-    public boolean firstkeyroot;
 
     public leafnode1() {
         arr = new ArrayList<Integer>();
