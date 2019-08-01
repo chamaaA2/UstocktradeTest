@@ -47,7 +47,7 @@ public class keynode1 extends supprnode {
     }
 
     @Override
-    void findvalues(int a, keynode1 keya) {
+    boolean findvalues(int a, keynode1 keya) {
         int p = Collections.binarySearch(al, a);
         leafnode1 ptnln;
         if (p >= 0) {
@@ -57,10 +57,11 @@ public class keynode1 extends supprnode {
             ptnln = keya.arra.get((p + 1) * -1);
 
         }
-        if (ptnln.arr.contains(a)) {
-            System.out.println("This value in tree now:       " + a);
-        } else {
-            System.out.println("THIS VALUE NOT in tree now:   " + a);
-        }
+        return ptnln.findvalues(a, keya); 
+    }
+
+    @Override
+    supprnode deletevalue(int a,keynode1 keya) {
+        return null;
     }
 }

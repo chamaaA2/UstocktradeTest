@@ -14,6 +14,8 @@ public abstract class supprnode {
 
     abstract supprnode insertvalues(int a,keynode1 keyroot) ;
 
-    abstract void findvalues(int a,keynode1 keyroot);
+    abstract boolean findvalues(int a,keynode1 keyroot);
+
+    abstract supprnode deletevalue(int a, keynode1 keyroot);
     
 }

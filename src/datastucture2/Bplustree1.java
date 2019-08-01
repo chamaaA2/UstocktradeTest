@@ -9,8 +9,7 @@ import DataStructure.leafnode;
 
 /**
  *
- * @author CHAMATH
- * one NODE can insert 3 values
+ * @author CHAMATH one NODE can insert 3 values
  */
 public class Bplustree1 {
 
@@ -22,10 +21,14 @@ public class Bplustree1 {
     public static void main(String[] args) throws InterruptedException {
         Bplustree1 bt = new Bplustree1();
 
+        bt.deletevaluetree(7);          //delete value in tree - delete from tree
+
         bt.insertvaluetree(5);
         bt.insertvaluetree(7);
         bt.insertvaluetree(4);
 
+        bt.deletevaluetree(6);          //delete value in tree - delete from tree
+        bt.deletevaluetree(5);          //delete value in tree - delete from tree
         bt.findvaluetree(5);            // find values in tree
 
         bt.insertvaluetree(8);
@@ -50,9 +53,7 @@ public class Bplustree1 {
 
         bt.insertvaluetree(9);
         bt.findvaluetree(100);            // find values in tree
-        
-        
-        
+
         Thread.sleep(10);
         bt.printall();
 
@@ -73,6 +74,12 @@ public class Bplustree1 {
     }
 
     public void deletevaluetree(int a) {
+        if (firstleafroot) {
+            System.err.println("The Tree is Empty now.");
+        } else {
+            rootnode = rootnode.deletevalue(a, key);
+           
+        }
 
     }
 

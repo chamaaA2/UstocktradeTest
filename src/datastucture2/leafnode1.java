@@ -62,7 +62,7 @@ public class leafnode1 extends supprnode implements Comparable<leafnode1> {
             return this;
         }
 
-       // System.err.println("key" + this.key);
+        // System.err.println("key" + this.key);
         Collections.sort(keya.arra);
         keya.al.clear();
         keya.insertlistkeys();
@@ -81,14 +81,35 @@ public class leafnode1 extends supprnode implements Comparable<leafnode1> {
     }
 
     @Override
-    void findvalues(int a, keynode1 keya) {
-        if (keya.arra.size() == 1) {
-            if (this.arr.contains(a)) {
-                System.out.println("This value in tree now:       "+a);
-            } else {
-                System.out.println("THIS VALUE NOT in tree now:   "+a); 
-            }
+    boolean findvalues(int a, keynode1 keya) {
+
+        if (this.arr.contains(a)) {
+            System.out.println("This value in tree now:       " + a);
+            return true;
+        } else {
+            System.out.println("THIS VALUE NOT in tree now:   " + a);
+            return false;
         }
+    }
+
+    @Override
+    supprnode deletevalue(int a, keynode1 keya) {
+        if (this.findvalues(a, keya)) {
+            for (Integer num : this.arr) {
+                if (num.equals(a)) {
+                    this.arr.remove(num);
+                    break;
+                }
+            }
+            Collections.sort(this.arr);
+            System.out.println("THIS VALUE REMOVE from tree:      " + a);
+            return this;
+
+        } else {
+            System.out.println("THIS VALUE NOT in tree now:   " + a);
+            return this;
+        }
+
     }
 
 }
