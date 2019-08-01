@@ -62,7 +62,7 @@ public class leafnode1 extends supprnode implements Comparable<leafnode1> {
             return this;
         }
 
-        System.err.println("key" + this.key);
+       // System.err.println("key" + this.key);
         Collections.sort(keya.arra);
         keya.al.clear();
         keya.insertlistkeys();
@@ -77,6 +77,17 @@ public class leafnode1 extends supprnode implements Comparable<leafnode1> {
             return 1;
         } else {
             return -1;
+        }
+    }
+
+    @Override
+    void findvalues(int a, keynode1 keya) {
+        if (keya.arra.size() == 1) {
+            if (this.arr.contains(a)) {
+                System.out.println("This value in tree now:       "+a);
+            } else {
+                System.out.println("THIS VALUE NOT in tree now:   "+a); 
+            }
         }
     }
 

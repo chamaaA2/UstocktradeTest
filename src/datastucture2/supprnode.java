@@ -13,5 +13,7 @@ public abstract class supprnode {
     int key;
 
     abstract supprnode insertvalues(int a,keynode1 keyroot) ;
+
+    abstract void findvalues(int a,keynode1 keyroot);
     
 }

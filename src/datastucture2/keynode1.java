@@ -33,7 +33,7 @@ public class keynode1 extends supprnode {
             ptnln = keya.arra.get((p + 1) * -1);
 
         }
-        
+
         return ptnln.insertvalues(a, keya);
 
     }
@@ -44,5 +44,23 @@ public class keynode1 extends supprnode {
         }
         al.remove(0);
 
+    }
+
+    @Override
+    void findvalues(int a, keynode1 keya) {
+        int p = Collections.binarySearch(al, a);
+        leafnode1 ptnln;
+        if (p >= 0) {
+            ptnln = keya.arra.get(p);
+
+        } else {
+            ptnln = keya.arra.get((p + 1) * -1);
+
+        }
+        if (ptnln.arr.contains(a)) {
+            System.out.println("This value in tree now:       " + a);
+        } else {
+            System.out.println("THIS VALUE NOT in tree now:   " + a);
+        }
     }
 }

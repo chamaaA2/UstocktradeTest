@@ -10,6 +10,7 @@ import DataStructure.leafnode;
 /**
  *
  * @author CHAMATH
+ * one NODE can insert 3 values
  */
 public class Bplustree1 {
 
@@ -18,27 +19,41 @@ public class Bplustree1 {
     public static boolean firstleafroot = true;
     keynode1 key = new keynode1();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Bplustree1 bt = new Bplustree1();
 
         bt.insertvaluetree(5);
         bt.insertvaluetree(7);
         bt.insertvaluetree(4);
 
+        bt.findvaluetree(5);            // find values in tree
+
         bt.insertvaluetree(8);
+
+        bt.findvaluetree(8);            // find values in tree
 
         bt.insertvaluetree(6);
         bt.insertvaluetree(5);
         bt.insertvaluetree(11);
+
+        bt.findvaluetree(6);            // find values in tree
+        bt.findvaluetree(12);            // find values in tree
+
         bt.insertvaluetree(13);
         bt.insertvaluetree(12);
 
-        bt.insertvaluetree(19);
+        bt.findvaluetree(5);            // find values in tree
 
+        bt.insertvaluetree(19);
         bt.insertvaluetree(20);
         bt.insertvaluetree(25);
-        bt.insertvaluetree(9);
 
+        bt.insertvaluetree(9);
+        bt.findvaluetree(100);            // find values in tree
+        
+        
+        
+        Thread.sleep(10);
         bt.printall();
 
         System.err.println("");
@@ -49,13 +64,20 @@ public class Bplustree1 {
         if (firstleafroot) {
             rootnode = new leafnode1();
             firstleafroot = false;
-            rootnode.key = a;
             key.arra.add((leafnode1) rootnode);
             rootnode = rootnode.insertvalues(a, key);
         } else {
             rootnode = rootnode.insertvalues(a, key);
         }
 
+    }
+
+    public void deletevaluetree(int a) {
+
+    }
+
+    public void findvaluetree(int a) {
+        rootnode.findvalues(a, key);
     }
 
     private void printall() {
