@@ -102,7 +102,7 @@ public class leafnode1 extends supprnode implements Comparable<leafnode1> {
                 }
             }
             Collections.sort(this.arr);
-            System.out.println("THIS VALUE REMOVE from tree:      " + a);
+            System.out.println("THIS VALUE REMOVE from tree:  " + a);
             return this;
 
         } else {

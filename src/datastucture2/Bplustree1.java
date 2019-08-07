@@ -6,6 +6,8 @@
 package datastucture2;
 
 import DataStructure.leafnode;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -60,7 +62,7 @@ public class Bplustree1 {
         System.err.println("");
     }
 
-    public void insertvaluetree(int a) {
+    public ArrayList<Integer>[] insertvaluetree(int a) {
 
         if (firstleafroot) {
             rootnode = new leafnode1();
@@ -70,21 +72,41 @@ public class Bplustree1 {
         } else {
             rootnode = rootnode.insertvalues(a, key);
         }
+        /*       this belaow code for test case
+       for Bplustree1 test class
+         */
 
+        int p = 0;
+        ArrayList<Integer>[] myist = new ArrayList[key.arra.size()];
+        for (leafnode1 obj : key.arra) {
+            myist[p++] = obj.arr;
+        }
+        return myist;
     }
 
-    public void deletevaluetree(int a) {
+    public List<Integer>[] deletevaluetree(int a) {
+
         if (firstleafroot) {
             System.err.println("The Tree is Empty now.");
         } else {
             rootnode = rootnode.deletevalue(a, key);
-
         }
+
+        /*       this belaow code for test case
+       for Bplustree1 test class
+         */
+        int p = 0;
+        ArrayList<Integer>[] myist = new ArrayList[key.arra.size()];
+        for (leafnode1 obj : key.arra) {
+            myist[p++] = obj.arr;
+        }
+        return myist;
 
     }
 
-    public void findvaluetree(int a) {
-        rootnode.findvalues(a, key);
+    public boolean findvaluetree(int a) {
+        boolean isnuoftree = rootnode.findvalues(a, key);
+        return isnuoftree;
     }
 
     private void printall() {
@@ -93,7 +115,6 @@ public class Bplustree1 {
         for (leafnode1 obj : key.arra) {
             System.err.print(obj.arr);
         }
-
     }
 
 }

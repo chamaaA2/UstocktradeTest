@@ -62,6 +62,6 @@ public class keynode1 extends supprnode {
 
     @Override
     supprnode deletevalue(int a,keynode1 keya) {
-        return null;
+        return this;
     }
 }

@@ -21,32 +21,9 @@ public class Bplustree {
     public static boolean firstroot = true;
     public int p;
 
-    public static void main(String[] args) {
-        Bplustree bt = new Bplustree();
+    public int insertvaluetree(int a) {
 
-        bt.insertvaluetree(7);
-        bt.insertvaluetree(4);
-
-        bt.insertvaluetree(8);
-        bt.insertvaluetree(5);
-        bt.insertvaluetree(6);
-
-       bt.insertvaluetree(5);
-       
-      // bt.insertvaluetree(5);
-//        bt.insertvaluetree(2);
-        ln.printq();
-
-    }
-
-    public void insertvaluetree(int a) {
-
-        if (firstroot) {
-            ln = new leafnode(a);
-            firstroot = false;
-        } else {
-            ln.insertvalues(a);
-        }
+        return 4;
 
     }
 
