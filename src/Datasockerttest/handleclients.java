@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class handleclients implements Runnable {
 
-    private BufferedInputStream bis;
+    private final BufferedInputStream bis;
     private byte[] bar;
     private Socket skt;
     private int length;
@@ -39,7 +39,6 @@ public class handleclients implements Runnable {
             os.close();
 
         } catch (IOException ex) {
-            ex.printStackTrace();
             try {
                 skt.close();
                 bis.close();
