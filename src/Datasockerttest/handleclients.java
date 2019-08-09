@@ -14,21 +14,23 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class handleclients extends Thread {
+public class handleclients implements Runnable {
 
     private BufferedInputStream bis;
     private byte[] bar;
     private Socket skt;
-
-    public handleclients(Socket skt, BufferedInputStream bis, byte[] bar) {
+    private int length;
+    public handleclients(Socket skt, BufferedInputStream bis, int length) {
         this.skt = skt;
         this.bis = bis;
-        this.bar = bar;
+        this.length=length;
+        
     }
 
     @Override
     public void run() {
-
+      System.out.println(Thread.currentThread().getName());
+      bar  = new byte[length];
         try {
             bis.read(bar);
             OutputStream os = skt.getOutputStream();
