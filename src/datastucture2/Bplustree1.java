@@ -5,7 +5,7 @@
  */
 package datastucture2;
 
-import DataStructure.leafnode;
+import DataStructureold.leafnode;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package test1;
+package Bufferreadtest;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,20 +7,23 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class BufferReaderpool extends Thread{
-    
-    
+public class BufferReadSimpleProgramme {
 
-    @Override
-    public void run() {
+    public static void main(String[] args) {
+
+        // find runtime
+        long startTime = System.nanoTime();
+
+        //find memory
+        Runtime rn = Runtime.getRuntime();
 
         HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
 
         BufferedReader reader = null;
 
         try {
-            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"),16384);
-            
+            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384);//16 KB Buffersize changed
+
             String currentLine = reader.readLine();
             while (currentLine != null) {
 
@@ -45,6 +48,7 @@ public class BufferReaderpool extends Thread{
             }
 
         } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             try {
                 reader.close();
@@ -52,5 +56,10 @@ public class BufferReaderpool extends Thread{
                 e.printStackTrace();
             }
         }
+        System.out.println(rn.totalMemory());
+        System.out.println(rn.freeMemory());
+
+        System.out.println(rn.totalMemory() - rn.freeMemory());
+        
     }
 }

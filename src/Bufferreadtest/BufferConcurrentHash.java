@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test1;
+package Bufferreadtest;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Set;
  *
  * @author CHAMATH
  */
-public class fileDecriptorClass implements Runnable {
+public class BufferConcurrentHash implements Runnable {
 
     static long startTime;
     static long endTime;
@@ -25,7 +25,7 @@ public class fileDecriptorClass implements Runnable {
 
     public static void main(String[] args) {
         startTime = System.nanoTime();
-        fileDecriptorClass bwp = new fileDecriptorClass();
+        BufferConcurrentHash bwp = new BufferConcurrentHash();
         bwp.run();
         endTime = System.nanoTime();
         long totalTime = (endTime - startTime) / 1000000;
@@ -35,10 +35,9 @@ public class fileDecriptorClass implements Runnable {
     @Override
     public void run() {
         HashMap<String, Integer> wordCountMap = new HashMap<String, Integer>();
-        FileInputStream reader = null;
+        BufferedReader reader = null;
         try {
-            reader = new FileInputStream(new File("C:\\Users\\CHAMATH\\Desktop\\test.txt")); //16 KB Buffersize changed
-            reader.getFD().sync();
+            reader = new BufferedReader(new FileReader("C:\\Users\\CHAMATH\\Desktop\\test.txt"), 16384); //16 KB Buffersize changed
             StringBuilder sw = new StringBuilder();
             int m = 0;
             String str = null;
@@ -57,7 +56,7 @@ public class fileDecriptorClass implements Runnable {
                             sw.setLength(0);
                         }
                     }
-
+                    
                 }
             }
             Set<Map.Entry<String, Integer>> entrySet = wordCountMap.entrySet();
